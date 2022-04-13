@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Credit Card Defaulters</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+      h1 {
+      position: absolute;
+      margin: 0;
+      font-size: 36px;
+      color: #fff;
+      z-index: 2;
+      }
+      span.required {
+      color: red;
+      }
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 20px;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 0 30px 0 #095484; 
+      }
+      .banner {
+      position: relative;
+      height: 180px;
+      background-image: url("/uploads/media/default/0001/01/9e07ce3a601795a5ac09a66a0c1fc8978e0ee51a.jpeg");  
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }
+      .banner::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4); 
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      }
+      p.top-info {
+      margin: 10px 0;
+      }
+      input, select {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
+      select {
+      width: 100%;
+      padding: 7px 0;
+      background: transparent;
+      }
+      .item:hover p, .question:hover p, .question label:hover, input:hover::placeholder {
+      color: #095484;
+      }
+      .item input:hover, .item select:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 5px 0 #095484;
+      color: #095484;
+      }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
+      .question input {
+      width: auto;
+      margin: 0;
+      border-radius: 50%;
+      }
+      .question input, .question span {
+      vertical-align: middle;
+      }
+      .question label {
+      display: inline-block;
+      margin: 5px 20px 15px 0;
+      }
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      background: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: #0666a3;
+      }
+      @media (min-width: 568px) {
+      .name-item, .city-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .name-item input, .city-item input {
+      width: calc(50% - 20px);
+      }
+      .city-item select {
+      width: calc(50% - 8px);
+      }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="testbox">
+      <form action="/predict" method="POST">
+        
+        <p class="top-info">Credit Card Application Form</p>
+
+
+        
+
+
+        <div class="question">
+          <p>SEX<span class="required">*</span></p>
+          <div class="question-answer">
+            <label><input type="radio" value='1' name="SEX" required/> <span>Male</span></label>
+            <label><input type="radio" value="2" name="SEX" required/> <span>Female</span></label>
+          </div>
+
+          <p>EDUCATION<span class="required">*</span></p>
+          <div class="question-answer">
+            <label><input type="radio" value='1' name="EDUCATION" required/> <span>Graduate</span></label>
+            <label><input type="radio" value="2" name="EDUCATION" required/> <span>University</span></label>
+            <label><input type="radio" value='3' name="EDUCATION" required/> <span>HighSchool</span></label>
+            <label><input type="radio" value="4" name="EDUCATION" required/> <span>Others</span></label>
+          </div>
+
+          <p>MARRIAGE<span class="required">*</span></p>
+          <div class="question-answer">
+            <label><input type="radio" value='1' name="MARRIAGE" required/> <span>Married</span></label>
+            <label><input type="radio" value="2" name="MARRIAGE" required/> <span>Single</span></label>
+            <label><input type="radio" value='3' name="MARRIAGE" required/> <span>Others</span></label>
+          </div>
+
+          <p>Repayment_status_in_September<span class="required">*</span></p>
+          <div class="question-answer">
+            <label><input type="radio" value='-2' name="Repayment_status_in_September" required/> <span>no consumption</span></label>
+            <label><input type="radio" value="-1" name="Repayment_status_in_September" required/> <span>pay duly</span></label>
+            <label><input type="radio" value='0' name="Repayment_status_in_September" required/> <span>the use of revolving credit</span></label>
+            <label><input type="radio" value='1' name="Repayment_status_in_September" required/> <span>payment delay for one month</span></label>
+            <label><input type="radio" value='2' name="Repayment_status_in_September" required/> <span>payment delay for two month</span></label>
+            <label><input type="radio" value='3' name="Repayment_status_in_September" required/> <span>payment delay for three month</span></label>
+            <label><input type="radio" value='4' name="Repayment_status_in_September" required/> <span>payment delay for four month</span></label>
+            <label><input type="radio" value='5' name="Repayment_status_in_September" required/> <span>payment delay for five month</span></label>
+            <label><input type="radio" value='6' name="Repayment_status_in_September" required/> <span>payment delay for six month</span></label>
+            <label><input type="radio" value='7' name="Repayment_status_in_September" required/> <span>payment delay for seven month</span></label>
+            <label><input type="radio" value='8' name="Repayment_status_in_September" required/> <span>payment delay for eight month</span></label>
+          </div>
+
+          <p>Repayment_status_in_August<span class="required">*</span></p>
+          <div class="question-answer">
+            <label><input type="radio" value='-2' name="Repayment_status_in_August" required/> <span>no consumption</span></label>
+            <label><input type="radio" value="-1" name="Repayment_status_in_August" required/> <span>pay duly</span></label>
+            <label><input type="radio" value='0' name="Repayment_status_in_August" required/> <span>the use of revolving credit</span></label>
+            <label><input type="radio" value='1' name="Repayment_status_in_August" required/> <span>payment delay for one month</span></label>
+            <label><input type="radio" value='2' name="Repayment_status_in_August" required/> <span>payment delay for two month</span></label>
+            <label><input type="radio" value='3' name="Repayment_status_in_August" required/> <span>payment delay for three month</span></label>
+            <label><input type="radio" value='4' name="Repayment_status_in_August" required/> <span>payment delay for four month</span></label>
+            <label><input type="radio" value='5' name="Repayment_status_in_August" required/> <span>payment delay for five month</span></label>
+            <label><input type="radio" value='6' name="Repayment_status_in_August" required/> <span>payment delay for six month</span></label>
+            <label><input type="radio" value='7' name="Repayment_status_in_August" required/> <span>payment delay for seven month</span></label>
+            <label><input type="radio" value='8' name="Repayment_status_in_August" required/> <span>payment delay for eight month</span></label>
+          </div>
+
+          <p>Repayment_status_in_July<span class="required">*</span></p>
+          <div class="question-answer">
+            <label><input type="radio" value='-2' name="Repayment_status_in_July" required/> <span>no consumption</span></label>
+            <label><input type="radio" value="-1" name="Repayment_status_in_July" required/> <span>pay duly</span></label>
+            <label><input type="radio" value='0' name="Repayment_status_in_July" required/> <span>the use of revolving credit</span></label>
+            <label><input type="radio" value='1' name="Repayment_status_in_July" required/> <span>payment delay for one month</span></label>
+            <label><input type="radio" value='2' name="Repayment_status_in_July" required/> <span>payment delay for two month</span></label>
+            <label><input type="radio" value='3' name="Repayment_status_in_July" required/> <span>payment delay for three month</span></label>
+            <label><input type="radio" value='4' name="Repayment_status_in_July" required/> <span>payment delay for four month</span></label>
+            <label><input type="radio" value='5' name="Repayment_status_in_July" required/> <span>payment delay for five month</span></label>
+            <label><input type="radio" value='6' name="Repayment_status_in_July" required/> <span>payment delay for six month</span></label>
+            <label><input type="radio" value='7' name="Repayment_status_in_July" required/> <span>payment delay for seven month</span></label>
+            <label><input type="radio" value='8' name="Repayment_status_in_July" required/> <span>payment delay for eight month</span></label>
+          </div>
+
+          <p>Repayment_status_in_June<span class="required">*</span></p>
+          <div class="question-answer">
+            <label><input type="radio" value='-2' name="Repayment_status_in_June" required/> <span>no consumption</span></label>
+            <label><input type="radio" value="-1" name="Repayment_status_in_June" required/> <span>pay duly</span></label>
+            <label><input type="radio" value='0' name="Repayment_status_in_June" required/> <span>the use of revolving credit</span></label>
+            <label><input type="radio" value='1' name="Repayment_status_in_June" required/> <span>payment delay for one month</span></label>
+            <label><input type="radio" value='2' name="Repayment_status_in_June" required/> <span>payment delay for two month</span></label>
+            <label><input type="radio" value='3' name="Repayment_status_in_June" required/> <span>payment delay for three month</span></label>
+            <label><input type="radio" value='4' name="Repayment_status_in_June" required/> <span>payment delay for four month</span></label>
+            <label><input type="radio" value='5' name="Repayment_status_in_June" required/> <span>payment delay for five month</span></label>
+            <label><input type="radio" value='6' name="Repayment_status_in_June" required/> <span>payment delay for six month</span></label>
+            <label><input type="radio" value='7' name="Repayment_status_in_June" required/> <span>payment delay for seven month</span></label>
+            <label><input type="radio" value='8' name="Repayment_status_in_June" required/> <span>payment delay for eight month</span></label>
+          </div>
+
+          <p>Repayment_status_in_May<span class="required">*</span></p>
+          <div class="question-answer">
+            <label><input type="radio" value='-2' name="Repayment_status_in_May" required/> <span>no consumption</span></label>
+            <label><input type="radio" value="-1" name="Repayment_status_in_May" required/> <span>pay duly</span></label>
+            <label><input type="radio" value='0' name="Repayment_status_in_May" required/> <span>the use of revolving credit</span></label>
+            <label><input type="radio" value='1' name="Repayment_status_in_May" required/> <span>payment delay for one month</span></label>
+            <label><input type="radio" value='2' name="Repayment_status_in_May" required/> <span>payment delay for two month</span></label>
+            <label><input type="radio" value='3' name="Repayment_status_in_May" required/> <span>payment delay for three month</span></label>
+            <label><input type="radio" value='4' name="Repayment_status_in_May" required/> <span>payment delay for four month</span></label>
+            <label><input type="radio" value='5' name="Repayment_status_in_May" required/> <span>payment delay for five month</span></label>
+            <label><input type="radio" value='6' name="Repayment_status_in_May" required/> <span>payment delay for six month</span></label>
+            <label><input type="radio" value='7' name="Repayment_status_in_May" required/> <span>payment delay for seven month</span></label>
+            <label><input type="radio" value='8' name="Repayment_status_in_May" required/> <span>payment delay for eight month</span></label>
+          </div>
+
+          <p>Repayment_status_in_April<span class="required">*</span></p>
+          <div class="question-answer">
+            <label><input type="radio" value='-2' name="Repayment_status_in_April" required/> <span>no consumption</span></label>
+            <label><input type="radio" value="-1" name="Repayment_status_in_April" required/> <span>pay duly</span></label>
+            <label><input type="radio" value='0' name="Repayment_status_in_April" required/> <span>the use of revolving credit</span></label>
+            <label><input type="radio" value='1' name="Repayment_status_in_April" required/> <span>payment delay for one month</span></label>
+            <label><input type="radio" value='2' name="Repayment_status_in_April" required/> <span>payment delay for two month</span></label>
+            <label><input type="radio" value='3' name="Repayment_status_in_April" required/> <span>payment delay for three month</span></label>
+            <label><input type="radio" value='4' name="Repayment_status_in_April" required/> <span>payment delay for four month</span></label>
+            <label><input type="radio" value='5' name="Repayment_status_in_April" required/> <span>payment delay for five month</span></label>
+            <label><input type="radio" value='6' name="Repayment_status_in_April" required/> <span>payment delay for six month</span></label>
+            <label><input type="radio" value='7' name="Repayment_status_in_April" required/> <span>payment delay for seven month</span></label>
+            <label><input type="radio" value='8' name="Repayment_status_in_April" required/> <span>payment delay for eight month</span></label>
+          </div>
+
+
+        <!-- <div class="item">
+            <p>Total Income <span class="required">*</span></p>
+            <input type="text" name="totalincome" required/>
+          </div> -->
+
+          <div class="item">
+              <label> LIMIT_BAL</label>
+            <input type="text" name="LIMIT_BAL" placeholder="LIMIT_BAL" required/>
+            
+          </div>
+
+          <div class="item">
+            <label> AGE</label>
+          <input type="text" name="AGE" placeholder="AGE" required/>
+          
+          </div>
+
+          <div class="item">
+            <label> Amount_of_bill_statement_in_September</label>
+          <input type="text" name="Amount_of_bill_statement_in_September" placeholder="Amount_of_bill_statement_in_September" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_bill_statement_in_August</label>
+          <input type="text" name="Amount_of_bill_statement_in_August" placeholder="Amount_of_bill_statement_in_August" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_bill_statement_in_July</label>
+          <input type="text" name="Amount_of_bill_statement_in_July" placeholder="Amount_of_bill_statement_in_July" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_bill_statement_in_June</label>
+          <input type="text" name="Amount_of_bill_statement_in_June" placeholder="Amount_of_bill_statement_in_June" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_bill_statement_in_May</label>
+          <input type="text" name="Amount_of_bill_statement_in_May" placeholder="Amount_of_bill_statement_in_May" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_bill_statement_in_April</label>
+          <input type="text" name="Amount_of_bill_statement_in_April" placeholder="Amount_of_bill_statement_in_April" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_previous_payment_in_September</label>
+          <input type="text" name="Amount_of_previous_payment_in_September" placeholder="Amount_of_previous_payment_in_September" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_previous_payment_in_August</label>
+          <input type="text" name="Amount_of_previous_payment_in_August" placeholder="Amount_of_previous_payment_in_August" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_previous_payment_in_July</label>
+          <input type="text" name="Amount_of_previous_payment_in_July" placeholder="Amount_of_previous_payment_in_July" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_previous_payment_in_June</label>
+          <input type="text" name="Amount_of_previous_payment_in_June" placeholder="Amount_of_previous_payment_in_June" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_previous_payment_in_May</label>
+          <input type="text" name="Amount_of_previous_payment_in_May" placeholder="Amount_of_previous_payment_in_May" required/>
+          
+        </div>
+
+        <div class="item">
+            <label> Amount_of_previous_payment_in_April</label>
+          <input type="text" name="Amount_of_previous_payment_in_April" placeholder="Amount_of_bill_statement_in_April" required/>
+          
+        </div>
+
+        </div>
+        
+        <div class="btn-block">
+          <button type="submit">Default Payment in Next Months?</button>
+        </div>
+
+        {{ Credit_Card_result }}
+      </form>
+    </div>
+  </body>
+</html>
